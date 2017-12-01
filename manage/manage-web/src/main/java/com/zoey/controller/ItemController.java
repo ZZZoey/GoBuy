@@ -1,5 +1,6 @@
 package com.zoey.controller;
 
+import com.zoey.common.pojo.EUDataGridResult;
 import com.zoey.pojo.TbItem;
 import com.zoey.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,13 @@ public class ItemController {
     public TbItem getItemById(@PathVariable Long itemId){
         TbItem tbItem=itemService.getItemById(itemId);
         return tbItem;
+    }
+
+    @RequestMapping("/item/list")
+    @ResponseBody
+    public EUDataGridResult getItemList(Integer page,Integer rows){
+        EUDataGridResult result=itemService.getItemList(page,rows);
+        return result;
     }
 
 }
